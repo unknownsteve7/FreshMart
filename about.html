@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FreshMart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FreshMart</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about">
+        <h1>About FreshMart</h1>
+        <p>At FreshMart, we are committed to providing the freshest produce, dairy, and grocery items directly to your doorstep.</p>
+        <p id="more-content" style="display: none;">Our goal is to ensure healthy, sustainable food options for every home. With a dedicated team of farmers and suppliers, we take pride in sourcing quality products at fair prices.</p>
+        <button id="read-more-btn" class="btn">Read More</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FreshMart. All Rights Reserved.</p>
+    </footer>
+    <script>
+        const readMoreBtn = document.getElementById('read-more-btn');
+        const moreContent = document.getElementById('more-content');
+    
+        readMoreBtn.addEventListener('click', () => {
+            if (moreContent.style.display === 'none') {
+                moreContent.style.display = 'block';
+                readMoreBtn.textContent = 'Read Less';
+            } else {
+                moreContent.style.display = 'none';
+                readMoreBtn.textContent = 'Read More';
+            }
+        });
+    </script>
+</body>
+</html>
