@@ -15,6 +15,8 @@
                 <li><a href="products.html">Products</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                                <li><a href="cart.html" class="cart-link">🛒 Cart</a></li>
+
             </ul>
         </nav>
     </header>
@@ -64,13 +66,35 @@
     </footer>
     <script>
         const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-        
+    
+        function getCart() {
+            const cart = localStorage.getItem('cart');
+            return cart ? JSON.parse(cart) : [];
+        }
+    
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    
         addToCartButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const productName = button.getAttribute('data-product');
+                const productPrice = parseFloat(button.previousElementSibling.textContent.replace('$', '').replace(' / kg', ''));
+    
+                const cart = getCart();
+    
+                const existingProduct = cart.find(item => item.product === productName);
+                if (existingProduct) {
+                    existingProduct.quantity += 1; 
+                } else {
+                    cart.push({ product: productName, price: productPrice, quantity: 1 });
+                }
+    
+                saveCart(cart);
+    
                 alert(`${productName} has been added to your cart!`);
             });
         });
-        </script>
+    </script>
 </body>
 </html>
